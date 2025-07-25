@@ -1,7 +1,5 @@
-'use client';
-
-import { UserListWidget } from '@/src/widgets/user/UserListWidget';
+import UsersPage from '@/src/pages/users/UsersPage';
 
 export default function Page() {
-  return <UserListWidget />;
+  return <UsersPage />;
 }
