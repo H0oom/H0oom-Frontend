@@ -1,2 +1,5 @@
-import AuthPage from '../../pages/auth/page';
-export default AuthPage;
+import AuthPage from '@/src/pages/auth/page';
+
+export default function Page() {
+  return <AuthPage />;
+}

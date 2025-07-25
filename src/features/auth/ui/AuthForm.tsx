@@ -1,5 +1,7 @@
+'use client';
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -11,7 +13,7 @@ import { SigninForm } from './SigninForm';
 import { SignupForm } from './SignupForm';
 
 export function AuthForm() {
-  const [tab, setTab] = React.useState('login');
+  const [tab, setTab] = useState('login');
   return (
     <Card className="border border-gray-100 bg-white shadow-xl">
       <CardHeader className="pb-2 text-center">
