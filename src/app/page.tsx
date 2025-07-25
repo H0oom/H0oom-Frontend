@@ -314,6 +314,7 @@ export default function AuthPage() {
   );
 }
 
+// 아래 컴포넌트들은 별도 파일로 분리 예정
 function UserListPage() {
   // 2. UserListPage에서 any 대신 User 타입 사용
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
