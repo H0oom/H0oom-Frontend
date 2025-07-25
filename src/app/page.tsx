@@ -14,15 +14,15 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 import { useState } from 'react';
-import { Button } from '../components/ui/button';
+import { Button } from '../shared/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../components/ui/card';
-import { Input } from '../components/ui/input';
+} from '../shared/ui/card';
+import { Input } from '../shared/ui/input';
 
 type User = {
   id: number;
@@ -314,6 +314,7 @@ export default function AuthPage() {
   );
 }
 
+// 아래 컴포넌트들은 별도 파일로 분리 예정
 function UserListPage() {
   // 2. UserListPage에서 any 대신 User 타입 사용
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
