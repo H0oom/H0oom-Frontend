@@ -1,7 +1,5 @@
-'use client';
-
-import { VideoCallWidget } from '@/src/widgets/video-call/VideoCallWidget';
+import ChatPage from '@/src/pages/chat/ChatPage';
 
 export default function Page() {
-  return <VideoCallWidget />;
+  return <ChatPage />;
 }
