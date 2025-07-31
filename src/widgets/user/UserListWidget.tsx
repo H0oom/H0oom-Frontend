@@ -27,10 +27,25 @@ export function UserListWidget() {
       </header>
       <div className="mx-auto max-w-4xl p-6">
         <div className="mb-8">
+          <h2 className="mb-6 text-xl font-medium text-black">AI</h2>
+          <div className="grid gap-2">
+            <UserCard
+              user={{
+                id: 'ai',
+                name: 'AI Assistant',
+                avatar: '🤖',
+                status: 'online',
+                statusMessage: 'Always ready to help',
+              }}
+              url="/chat-ai"
+            />
+          </div>
+        </div>
+        <div className="mb-8">
           <h2 className="mb-6 text-xl font-medium text-black">People</h2>
           <div className="grid gap-2">
             {users.map((user) => (
-              <UserCard key={user.id} user={user} />
+              <UserCard key={user.id} user={user} url={`/chat/${user.id}`} />
             ))}
           </div>
         </div>

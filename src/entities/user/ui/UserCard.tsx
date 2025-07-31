@@ -6,14 +6,15 @@ import { User } from '../types';
 
 interface UserCardProps {
   user: User;
+  url: string;
 }
 
-export function UserCard({ user }: UserCardProps) {
+export function UserCard({ user, url }: UserCardProps) {
   const router = useRouter();
 
   return (
     <div
-      onClick={() => router.push(`/chat/${user.id}`)}
+      onClick={() => router.push(url)}
       className="group cursor-pointer rounded-2xl border border-gray-100 bg-white p-5 transition-all duration-200 hover:bg-gray-50 hover:shadow-md"
     >
       <div className="flex items-center justify-between">
