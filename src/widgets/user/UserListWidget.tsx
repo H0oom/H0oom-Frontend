@@ -1,7 +1,7 @@
 'use client';
 
 import { Video } from 'lucide-react';
-import { users } from '@/src/entities/user/mockUsers';
+import { AiUsers, users } from '@/src/entities/user/mockUsers';
 import { UserCard } from '@/src/entities/user/ui/UserCard';
 
 export function UserListWidget() {
@@ -29,16 +29,7 @@ export function UserListWidget() {
         <div className="mb-8">
           <h2 className="mb-6 text-xl font-medium text-black">AI</h2>
           <div className="grid gap-2">
-            <UserCard
-              user={{
-                id: 'ai',
-                name: 'AI Assistant',
-                avatar: '🤖',
-                status: 'online',
-                statusMessage: 'Always ready to help',
-              }}
-              url="/chat-ai"
-            />
+            <UserCard user={AiUsers} url="/chat-ai" />
           </div>
         </div>
         <div className="mb-8">

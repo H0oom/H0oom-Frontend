@@ -5,7 +5,7 @@ import { Button } from '../../../shared/ui/button';
 type ChatHeaderProps = {
   user: User;
   onBack: () => void;
-  onCall: () => void;
+  onCall?: () => void;
 };
 
 export function ChatHeader({ user, onBack, onCall }: ChatHeaderProps) {
@@ -30,15 +30,17 @@ export function ChatHeader({ user, onBack, onCall }: ChatHeaderProps) {
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-3">
-          <Button
-            onClick={onCall}
-            className="rounded-xl bg-black px-6 py-2 text-white hover:bg-gray-800"
-          >
-            <Phone className="mr-2 h-4 w-4" />
-            통화
-          </Button>
-        </div>
+        {onCall ? (
+          <div className="flex items-center space-x-3">
+            <Button
+              onClick={onCall}
+              className="rounded-xl bg-black px-6 py-2 text-white hover:bg-gray-800"
+            >
+              <Phone className="mr-2 h-4 w-4" />
+              통화
+            </Button>
+          </div>
+        ) : null}
       </div>
     </header>
   );

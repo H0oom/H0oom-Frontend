@@ -1,7 +1,5 @@
-import React from 'react';
+import AiChatPage from '@/src/pages/chat/AiChatPage';
 
-const page = () => {
-  return <div>chat-ai</div>;
-};
-
-export default page;
+export default function Page() {
+  return <AiChatPage />;
+}
