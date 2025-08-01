@@ -87,6 +87,8 @@ export function useAiChat(userName: string) {
           console.log('변환된 텍스트:', textChunk);
           const lines = textChunk.split('\n').filter((line) => line.trim());
 
+          console.log('lines:', lines);
+
           for (const line of lines) {
             try {
               const jsonData = JSON.parse(line);
@@ -116,16 +118,15 @@ export function useAiChat(userName: string) {
           }
         }
 
-        setMessages((prev) =>
-          prev.map((msg) =>
-            msg.id === aiMessageId
-              ? {
-                  ...msg,
-                  content: fullContent || '응답을 받아오는데 실패했습니다.',
-                }
-              : msg,
-          ),
-        );
+        if (!fullContent) {
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === aiMessageId
+                ? { ...msg, content: '응답을 받아오는데 실패했습니다.' }
+                : msg,
+            ),
+          );
+        }
       } catch (error) {
         console.error('AI API 호출 중 오류:', error);
 
