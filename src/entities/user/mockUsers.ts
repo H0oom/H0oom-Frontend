@@ -44,3 +44,11 @@ export const users: User[] = [
     statusMessage: '수업 중',
   },
 ];
+
+export const AiUsers: User = {
+  id: 'ai',
+  name: 'AI Assistant',
+  avatar: '🤖',
+  status: 'online',
+  statusMessage: 'Always ready to help',
+};

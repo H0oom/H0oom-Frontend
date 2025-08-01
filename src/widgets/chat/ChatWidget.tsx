@@ -10,7 +10,7 @@ import { ChatMessages } from '@/src/features/chat/ui/ChatMessages';
 export function ChatWidget() {
   const router = useRouter();
   const params = useParams();
-  const userId = Number(params.userId);
+  const userId = Number(params?.userId || '0');
   const user = users.find((u) => u.id === userId);
   const { message, setMessage, messages, sendMessage } = useChat(
     user?.name || '',
