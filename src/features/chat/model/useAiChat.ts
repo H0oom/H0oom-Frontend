@@ -36,7 +36,7 @@ export function useAiChat(userName: string) {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              model: 'gemma3:12b-it-q8_0',
+              model: process.env.NEXT_PUBLIC_AI_MODEL,
               prompt: message,
             }),
           },
