@@ -1,14 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-
-export type Message = {
-  id: number;
-  sender: string;
-  content: string;
-  time: string;
-  isMe: boolean;
-};
+import { v4 as uuidv4 } from 'uuid';
+import { Message } from './useChat';
 
 export function useAiChat(userName: string) {
   const [message, setMessage] = useState('');
@@ -18,7 +12,7 @@ export function useAiChat(userName: string) {
   const sendMessage = async () => {
     if (message.trim() && !isLoading) {
       const userMessage = {
-        id: messages.length + 1,
+        id: uuidv4(),
         sender: '나',
         content: message,
         time: new Date().toLocaleTimeString('ko-KR', {
@@ -57,7 +51,7 @@ export function useAiChat(userName: string) {
 
         let fullContent = '';
 
-        const aiMessageId = messages.length + 2;
+        const aiMessageId = uuidv4();
         const aiMessage = {
           id: aiMessageId,
           sender: userName,
@@ -131,7 +125,7 @@ export function useAiChat(userName: string) {
         console.error('AI API 호출 중 오류:', error);
 
         const errorMessage = {
-          id: messages.length + 2,
+          id: uuidv4(),
           sender: userName,
           content: '죄송합니다. 응답을 처리하는 중에 오류가 발생했습니다.',
           time: new Date().toLocaleTimeString('ko-KR', {

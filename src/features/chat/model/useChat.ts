@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 export type Message = {
-  id: number;
+  id: number | string;
   sender: string;
   content: string;
   time: string;
