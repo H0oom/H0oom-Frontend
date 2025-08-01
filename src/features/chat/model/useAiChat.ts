@@ -104,6 +104,7 @@ export function useAiChat(userName: string) {
 
               if (jsonData.done) {
                 console.log('응답 완료!');
+                streamDone = true;
                 break;
               }
             } catch (error) {
