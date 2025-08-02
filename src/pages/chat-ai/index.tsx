@@ -1,5 +1,5 @@
-import AiChatPage from '@/pages/chat/AiChatPage';
+import { AiChatWidget } from '@/widgets/chat/AiChatWidget';
 
-export default function AiChatPageWrapper() {
-  return <AiChatPage />;
+export default function AiChatPage() {
+  return <AiChatWidget />;
 }

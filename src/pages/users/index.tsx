@@ -1,5 +1,5 @@
-import UsersPage from '@/pages/users/UsersPage';
+import { UserListWidget } from '@/widgets/user/UserListWidget';
 
-export default function UsersPageWrapper() {
-  return <UsersPage />;
+export default function UsersPage() {
+  return <UserListWidget />;
 }

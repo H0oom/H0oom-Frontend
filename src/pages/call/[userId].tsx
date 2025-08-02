@@ -1,5 +1,5 @@
-import CallPage from '@/pages/call/CallPage';
+import { VideoCallWidget } from '@/widgets/video-call/VideoCallWidget';
 
-export default function CallPageWrapper() {
-  return <CallPage />;
+export default function CallPage() {
+  return <VideoCallWidget />;
 }

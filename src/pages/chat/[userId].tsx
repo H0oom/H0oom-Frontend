@@ -1,5 +1,5 @@
-import ChatPage from '@/pages/chat/ChatPage';
+import { ChatWidget } from '@/widgets/chat/ChatWidget';
 
-export default function ChatPageWrapper() {
-  return <ChatPage />;
+export default function ChatPage() {
+  return <ChatWidget />;
 }
