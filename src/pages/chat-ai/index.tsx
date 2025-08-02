@@ -1,4 +1,4 @@
-import { AiChatWidget } from '@/src/widgets/chat/AiChatWidget';
+import { AiChatWidget } from '@/widgets/chat/AiChatWidget';
 
 export default function AiChatPage() {
   return <AiChatWidget />;

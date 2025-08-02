@@ -1,5 +1,5 @@
 import { Mic, MicOff, Camera, CameraOff, PhoneOff } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { Button } from '../../../shared/ui/button';
 
 interface VideoCallControlsProps {

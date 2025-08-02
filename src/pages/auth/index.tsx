@@ -1,9 +1,8 @@
-import { Video } from 'lucide-react';
-import { AuthForm } from '../../features/auth/ui/AuthForm';
+import { AuthForm } from "@/features/auth/ui/AuthForm";
+import { Video } from "lucide-react";
 
 export default function AuthPage() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-white p-4">
+  return (<div className="flex min-h-screen items-center justify-center bg-white p-4">
       <div className="w-full max-w-md">
         <div className="mb-12 text-center">
           <div className="mb-6 flex items-center justify-center">
@@ -24,5 +23,5 @@ export default function AuthPage() {
         <AuthForm />
       </div>
     </div>
-  );
+  )
 }

@@ -1,11 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { AiUsers } from '@/src/entities/user/mockUsers';
-import { useAiChat } from '@/src/features/chat/model/useAiChat';
-import { ChatHeader } from '@/src/features/chat/ui/ChatHeader';
-import { ChatInput } from '@/src/features/chat/ui/ChatInput';
-import { ChatMessages } from '@/src/features/chat/ui/ChatMessages';
+import { useRouter } from 'next/router';
+import { AiUsers } from '@/entities/user/mockUsers';
+import { useAiChat } from '@/features/chat/model/useAiChat';
+import { ChatHeader } from '@/features/chat/ui/ChatHeader';
+import { ChatInput } from '@/features/chat/ui/ChatInput';
+import { ChatMessages } from '@/features/chat/ui/ChatMessages';
 
 export function AiChatWidget() {
   const router = useRouter();
