@@ -1,13 +1,13 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { users } from '../../entities/user/mockUsers';
 import { useVideoCall } from '../../features/video-call/model/useVideoCall';
 import { VideoCallControls } from '../../features/video-call/ui/VideoCallControls';
 
 export function VideoCallWidget() {
-  const params = useParams();
-  const userId = Number(params?.userId || 0);
+  const router = useRouter();
+  const userId = Number(router.query.userId || 0);
   const user = users.find((u) => u.id === userId);
   const { isMuted, setIsMuted, isVideoOff, setIsVideoOff } = useVideoCall();
 

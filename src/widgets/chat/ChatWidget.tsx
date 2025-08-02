@@ -1,16 +1,15 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
-import { users } from '@/src/entities/user/mockUsers';
-import { useChat } from '@/src/features/chat/model/useChat';
-import { ChatHeader } from '@/src/features/chat/ui/ChatHeader';
-import { ChatInput } from '@/src/features/chat/ui/ChatInput';
-import { ChatMessages } from '@/src/features/chat/ui/ChatMessages';
+import { useRouter } from 'next/router';
+import { users } from '@/entities/user/mockUsers';
+import { useChat } from '@/features/chat/model/useChat';
+import { ChatHeader } from '@/features/chat/ui/ChatHeader';
+import { ChatInput } from '@/features/chat/ui/ChatInput';
+import { ChatMessages } from '@/features/chat/ui/ChatMessages';
 
 export function ChatWidget() {
   const router = useRouter();
-  const params = useParams();
-  const userId = Number(params?.userId || '0');
+  const userId = Number(router.query.userId || '0');
   const user = users.find((u) => u.id === userId);
   const { message, setMessage, messages, sendMessage } = useChat(
     user?.name || '',

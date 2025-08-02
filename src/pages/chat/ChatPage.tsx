@@ -1,4 +1,4 @@
-import { ChatWidget } from '@/src/widgets/chat/ChatWidget';
+import { ChatWidget } from '@/widgets/chat/ChatWidget';
 
 export default function ChatPage() {
   return <ChatWidget />;

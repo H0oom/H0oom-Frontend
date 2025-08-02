@@ -1,8 +1,8 @@
 'use client';
 
 import { Video } from 'lucide-react';
-import { AiUsers, users } from '@/src/entities/user/mockUsers';
-import { UserCard } from '@/src/entities/user/ui/UserCard';
+import { AiUsers, users } from '@/entities/user/mockUsers';
+import { UserCard } from '@/entities/user/ui/UserCard';
 
 export function UserListWidget() {
   return (

@@ -1,4 +1,4 @@
-import { UserListWidget } from '@/src/widgets/user/UserListWidget';
+import { UserListWidget } from '@/widgets/user/UserListWidget';
 
 export default function UsersPage() {
   return <UserListWidget />;
