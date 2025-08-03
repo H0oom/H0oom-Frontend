@@ -15,7 +15,7 @@ import { SignupForm } from './SignupForm';
 
 export function AuthForm() {
   const [tab, setTab] = useState('login');
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('auth');
 
   return (
     <Card className="border border-gray-100 bg-white shadow-xl">

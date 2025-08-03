@@ -1,19 +1,5 @@
 {
   "welcome": "환영합니다",
-  "or": "또는",
-  "hello": "안녕하세요",
-  "login": "로그인",
-  "signup": "회원가입",
-  "logout": "로그아웃",
-  "email": "이메일",
-  "password": "비밀번호",
-  "confirmPassword": "비밀번호 확인",
-  "name": "이름",
-  "chat": "채팅",
-  "videoCall": "화상통화",
-  "users": "사용자",
-  "send": "전송",
-  "typeMessage": "메시지를 입력하세요...",
   "loading": "로딩 중...",
   "error": "오류가 발생했습니다",
   "success": "성공",
@@ -28,4 +14,4 @@
   "theme": "테마",
   "dark": "다크",
   "light": "라이트"
-} 
+}

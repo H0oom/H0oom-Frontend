@@ -1,19 +1,5 @@
 {
   "welcome": "Welcome",
-  "or": "or",
-  "hello": "Hello",
-  "login": "Login",
-  "signup": "Sign Up",
-  "logout": "Logout",
-  "email": "Email",
-  "password": "Password",
-  "confirmPassword": "Confirm Password",
-  "name": "Name",
-  "chat": "Chat",
-  "videoCall": "Video Call",
-  "users": "Users",
-  "send": "Send",
-  "typeMessage": "Type a message...",
   "loading": "Loading...",
   "error": "An error occurred",
   "success": "Success",
@@ -28,4 +14,4 @@
   "theme": "Theme",
   "dark": "Dark",
   "light": "Light"
-} 
+}
