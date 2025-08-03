@@ -35,7 +35,7 @@ export default function AuthPage() {
 export const getStaticProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'ko', ['common'])),
+      ...(await serverSideTranslations(locale ?? 'ko', ['common', 'auth'])),
     },
   };
 };
