@@ -1,6 +1,7 @@
 import { ArrowLeft, Phone } from 'lucide-react';
 import { User } from '../../../entities/user/types';
 import { Button } from '../../../shared/ui/button';
+import { useTranslation } from 'next-i18next';
 
 type ChatHeaderProps = {
   user: User;
@@ -9,6 +10,8 @@ type ChatHeaderProps = {
 };
 
 export function ChatHeader({ user, onBack, onCall }: ChatHeaderProps) {
+  const { t } = useTranslation('chat');
+
   return (
     <header className="border-b border-gray-100 bg-white p-6">
       <div className="mx-auto flex max-w-4xl items-center justify-between">
@@ -26,7 +29,7 @@ export function ChatHeader({ user, onBack, onCall }: ChatHeaderProps) {
           <div>
             <h2 className="text-lg font-medium text-black">{user.name}</h2>
             <p className="text-sm text-gray-500">
-              {user.status === 'online' ? '온라인' : '자리비움'}
+              {user.status === 'online' ? t('status.online') : t('status.away')}
             </p>
           </div>
         </div>
@@ -37,7 +40,7 @@ export function ChatHeader({ user, onBack, onCall }: ChatHeaderProps) {
               className="rounded-xl bg-black px-6 py-2 text-white hover:bg-gray-800"
             >
               <Phone className="mr-2 h-4 w-4" />
-              통화
+              {t('call')}
             </Button>
           </div>
         ) : null}

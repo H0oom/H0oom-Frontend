@@ -1,0 +1,11 @@
+{
+  "notFound": "유저를 찾을 수 없습니다.",
+  "status": {
+    "online": "온라인",
+    "away": "자리비움"
+  },
+  "call": "통화",
+  "inputPlaceholder": "메시지를 입력하세요...",
+  "sending": "전송 중...",
+  "send": "전송"
+}

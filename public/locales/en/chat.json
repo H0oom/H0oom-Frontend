@@ -1,0 +1,11 @@
+{
+  "notFound": "User not found.",
+  "status": {
+    "online": "Online",
+    "away": "Away"
+  },
+  "call": "Call",
+  "inputPlaceholder": "Type a message...",
+  "sending": "Sending...",
+  "send": "Send"
+}
