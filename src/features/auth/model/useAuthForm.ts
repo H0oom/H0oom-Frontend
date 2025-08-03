@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { AuthFormData, AuthFormErrors } from '../../../entities/auth/types';
+import { useTranslation } from 'next-i18next';
 
 export function useAuthForm() {
+  const { t } = useTranslation('auth');
   const [formData, setFormData] = useState<AuthFormData>({
     email: '',
     password: '',
@@ -31,23 +33,22 @@ export function useAuthForm() {
     switch (field) {
       case 'email':
         if (value && !validateEmail(value)) {
-          error = '올바른 이메일 형식을 입력해주세요';
+          error = t('errors.invalidEmail');
         }
         break;
       case 'password':
         if (value && !validatePassword(value)) {
-          error =
-            '비밀번호는 8자 이상, 대소문자, 숫자, 특수문자를 포함해야 합니다';
+          error = t('errors.invalidPassword');
         }
         break;
       case 'name':
         if (value && !validateName(value)) {
-          error = '이름은 2자 이상 입력해주세요';
+          error = t('errors.invalidName');
         }
         break;
       case 'confirmPassword':
         if (value && value !== formData.password) {
-          error = '비밀번호가 일치하지 않습니다';
+          error = t('errors.passwordMismatch');
         }
         break;
     }

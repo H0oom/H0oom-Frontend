@@ -1,0 +1,17 @@
+{
+  "welcome": "Welcome",
+  "loading": "Loading...",
+  "error": "An error occurred",
+  "success": "Success",
+  "cancel": "Cancel",
+  "save": "Save",
+  "edit": "Edit",
+  "delete": "Delete",
+  "search": "Search",
+  "settings": "Settings",
+  "profile": "Profile",
+  "language": "Language",
+  "theme": "Theme",
+  "dark": "Dark",
+  "light": "Light"
+}

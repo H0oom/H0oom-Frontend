@@ -4,14 +4,16 @@ import { useRouter } from 'next/router';
 import { users } from '../../entities/user/mockUsers';
 import { useVideoCall } from '../../features/video-call/model/useVideoCall';
 import { VideoCallControls } from '../../features/video-call/ui/VideoCallControls';
+import { useTranslation } from 'next-i18next';
 
 export function VideoCallWidget() {
+  const { t } = useTranslation('video-call');
   const router = useRouter();
   const userId = Number(router.query.userId || 0);
   const user = users.find((u) => u.id === userId);
   const { isMuted, setIsMuted, isVideoOff, setIsVideoOff } = useVideoCall();
 
-  if (!user) return <div>유저를 찾을 수 없습니다.</div>;
+  if (!user) return <div>{t('notFound')}</div>;
 
   return (
     <div className="relative min-h-screen bg-black">
@@ -50,7 +52,7 @@ export function VideoCallWidget() {
                     👤
                   </div>
                   <p className="text-lg font-medium text-white md:text-xl">
-                    나
+                    {t('me')}
                   </p>
                 </div>
               </div>
@@ -69,7 +71,7 @@ export function VideoCallWidget() {
       <div className="absolute left-4 top-4 md:left-8 md:top-8">
         <div className="rounded-xl bg-white/10 px-4 py-2 backdrop-blur-xl md:rounded-2xl md:px-6 md:py-3">
           <p className="text-sm font-medium text-white md:text-base">
-            {user.name}와 통화 중
+            {t('inCallWith', { name: user.name })}
           </p>
         </div>
       </div>

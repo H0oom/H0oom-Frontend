@@ -1,0 +1,17 @@
+{
+  "welcome": "환영합니다",
+  "loading": "로딩 중...",
+  "error": "오류가 발생했습니다",
+  "success": "성공",
+  "cancel": "취소",
+  "save": "저장",
+  "edit": "편집",
+  "delete": "삭제",
+  "search": "검색",
+  "settings": "설정",
+  "profile": "프로필",
+  "language": "언어",
+  "theme": "테마",
+  "dark": "다크",
+  "light": "라이트"
+}
