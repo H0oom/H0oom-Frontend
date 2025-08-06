@@ -69,24 +69,18 @@ export function useAiChat(userName: string) {
         let streamDone = false;
         while (!streamDone) {
           const { done, value } = await reader.read();
-          console.log('받은 바이너리:', value);
 
           if (done) {
-            console.log('스트림 종료');
             streamDone = true;
             break;
           }
 
           const textChunk = decoder.decode(value, { stream: true });
-          console.log('변환된 텍스트:', textChunk);
           const lines = textChunk.split('\n').filter((line) => line.trim());
-
-          console.log('lines:', lines);
 
           for (const line of lines) {
             try {
               const jsonData = JSON.parse(line);
-              console.log('파싱된 JSON:', jsonData);
 
               if (jsonData.response) {
                 fullContent += jsonData.response;
@@ -98,12 +92,9 @@ export function useAiChat(userName: string) {
                       : msg,
                   ),
                 );
-
-                console.log('현재까지 누적된 내용:', fullContent);
               }
 
               if (jsonData.done) {
-                console.log('응답 완료!');
                 streamDone = true;
                 break;
               }
