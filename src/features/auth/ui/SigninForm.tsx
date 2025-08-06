@@ -1,4 +1,3 @@
-'use client';
 import { useRouter } from 'next/router';
 import { Button } from '../../../shared/ui/button';
 import { Input } from '../../../shared/ui/input';

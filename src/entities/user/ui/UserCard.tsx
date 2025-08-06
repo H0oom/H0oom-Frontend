@@ -1,5 +1,3 @@
-'use client';
-
 import { MessageCircle } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { User } from '../types';

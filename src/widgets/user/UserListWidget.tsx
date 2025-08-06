@@ -1,5 +1,3 @@
-'use client';
-
 import { Video } from 'lucide-react';
 import { AiUsers, users } from '@/entities/user/mockUsers';
 import { UserCard } from '@/entities/user/ui/UserCard';

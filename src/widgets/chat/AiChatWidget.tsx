@@ -1,5 +1,3 @@
-'use client';
-
 import { useRouter } from 'next/router';
 import { AiUsers } from '@/entities/user/mockUsers';
 import { useAiChat } from '@/features/chat/model/useAiChat';
