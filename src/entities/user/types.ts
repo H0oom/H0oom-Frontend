@@ -1,6 +1,6 @@
 export type User = {
   id: number | string;
-  name: string;
+  fullname: string;
   status: 'online' | 'away';
   avatar: string;
   statusMessage: string;

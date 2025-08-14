@@ -1,5 +1,5 @@
-import axios from "axios";
-import { getAccessToken, refreshAccessToken, clearTokens } from "./tokenService";
+import axios from 'axios';
+import { getAccessToken } from './tokenService';
 
 const axiosClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_SERVER_BASE_URL,
@@ -8,33 +8,15 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use((config) => {
   const token = getAccessToken();
-  if (token) {
+
+  const url = config.url || '';
+  const isAuthPath = url.includes('/auth') || url.startsWith('/auth');
+
+  if (token && !isAuthPath) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+
   return config;
 });
-
-axiosClient.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      const newToken = await refreshAccessToken();
-      if (!newToken) {
-        clearTokens();
-        window.location.href = "/login";
-        return Promise.reject(error);
-      }
-
-      originalRequest.headers.Authorization = `Bearer ${newToken}`;
-      return axiosClient(originalRequest);
-    }
-
-    return Promise.reject(error);
-  }
-);
 
 export default axiosClient;

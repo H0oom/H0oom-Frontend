@@ -26,7 +26,7 @@ export function UserCard({ user, url }: UserCardProps) {
             />
           </div>
           <div>
-            <h3 className="text-lg font-medium text-black">{user.name}</h3>
+            <h3 className="text-lg font-medium text-black">{user.fullname}</h3>
             <p className="text-sm text-gray-500">{user.statusMessage}</p>
           </div>
         </div>

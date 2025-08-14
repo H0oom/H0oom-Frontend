@@ -1,19 +1,19 @@
 export interface User {
-  id: string;
+  id: number;
   email: string;
-  name: string;
+  fullname: string;
 }
 
 export interface AuthFormData {
   email: string;
   password: string;
-  name?: string;
+  fullname?: string;
   confirmPassword?: string;
 }
 
 export interface AuthFormErrors {
   email?: string;
   password?: string;
-  name?: string;
+  fullname?: string;
   confirmPassword?: string;
 }
