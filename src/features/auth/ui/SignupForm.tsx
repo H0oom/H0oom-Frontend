@@ -19,7 +19,7 @@ export function SignupForm() {
     if (
       validateEmail(formData.email) &&
       validatePassword(formData.password) &&
-      validateName(formData.name || '') &&
+      validateName(formData.fullname || '') &&
       formData.password === formData.confirmPassword
     ) {
       router.push('/users');
@@ -29,19 +29,19 @@ export function SignupForm() {
   return (
     <form className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="name" className="font-medium text-black">
+        <Label htmlFor="fullname" className="font-medium text-black">
           Full Name
         </Label>
         <Input
-          id="name"
+          id="fullname"
           type="text"
           placeholder="John Doe"
-          value={formData.name}
-          onChange={(e) => handleInputChange('name', e.target.value)}
-          className={`h-12 rounded-xl border-gray-200 bg-white text-black placeholder-gray-400 focus:border-black focus:ring-1 focus:ring-black ${errors.name ? 'border-red-500' : ''}`}
+          value={formData.fullname}
+          onChange={(e) => handleInputChange('fullname', e.target.value)}
+          className={`h-12 rounded-xl border-gray-200 bg-white text-black placeholder-gray-400 focus:border-black focus:ring-1 focus:ring-black ${errors.fullname ? 'border-red-500' : ''}`}
         />
-        {errors.name && (
-          <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+        {errors.fullname && (
+          <p className="mt-1 text-sm text-red-500">{errors.fullname}</p>
         )}
       </div>
       <div className="space-y-2">

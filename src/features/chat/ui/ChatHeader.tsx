@@ -27,7 +27,7 @@ export function ChatHeader({ user, onBack, onCall }: ChatHeaderProps) {
             {user.avatar}
           </div>
           <div>
-            <h2 className="text-lg font-medium text-black">{user.name}</h2>
+            <h2 className="text-lg font-medium text-black">{user.fullname}</h2>
             <p className="text-sm text-gray-500">
               {user.status === 'online' ? t('status.online') : t('status.away')}
             </p>

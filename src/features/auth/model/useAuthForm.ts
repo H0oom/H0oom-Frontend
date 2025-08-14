@@ -7,7 +7,7 @@ export function useAuthForm() {
   const [formData, setFormData] = useState<AuthFormData>({
     email: '',
     password: '',
-    name: '',
+    fullname: '',
     confirmPassword: '',
   });
   const [errors, setErrors] = useState<AuthFormErrors>({});
@@ -23,8 +23,8 @@ export function useAuthForm() {
     return passwordRegex.test(password);
   };
 
-  const validateName = (name: string) => {
-    return name.trim().length >= 2;
+  const validateName = (fullname: string) => {
+    return fullname.trim().length >= 2;
   };
 
   const handleInputChange = (field: keyof AuthFormData, value: string) => {
@@ -41,7 +41,7 @@ export function useAuthForm() {
           error = t('errors.invalidPassword');
         }
         break;
-      case 'name':
+      case 'fullname':
         if (value && !validateName(value)) {
           error = t('errors.invalidName');
         }

@@ -26,7 +26,7 @@ export function VideoCallWidget() {
                       {user.avatar}
                     </div>
                     <p className="text-lg font-medium text-white md:text-xl">
-                      {user.name}
+                      {user.fullname}
                     </p>
                   </div>
                 </div>
@@ -37,7 +37,7 @@ export function VideoCallWidget() {
                       {user.avatar}
                     </div>
                     <p className="text-lg font-medium text-white md:text-xl">
-                      {user.name}
+                      {user.fullname}
                     </p>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ export function VideoCallWidget() {
       <div className="absolute left-4 top-4 md:left-8 md:top-8">
         <div className="rounded-xl bg-white/10 px-4 py-2 backdrop-blur-xl md:rounded-2xl md:px-6 md:py-3">
           <p className="text-sm font-medium text-white md:text-base">
-            {t('inCallWith', { name: user.name })}
+            {t('inCallWith', { name: user.fullname })}
           </p>
         </div>
       </div>
