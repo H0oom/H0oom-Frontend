@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Message } from './useChat';
+import { fetchClient } from '@/shared/api/fetchClient';
 
 export function useAiChat(userName: string) {
   const [message, setMessage] = useState('');
@@ -26,19 +27,14 @@ export function useAiChat(userName: string) {
       setIsLoading(true);
 
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_AI_BASE_URL}/api/generate`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              model: process.env.NEXT_PUBLIC_AI_MODEL,
-              prompt: message,
-            }),
-          },
-        );
+        const response = await fetchClient('/api/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: process.env.NEXT_PUBLIC_AI_MODEL,
+            prompt: message,
+          }),
+        });
 
         if (!response.body) {
           throw new Error('응답 본문이 없습니다.');
