@@ -1,11 +1,10 @@
-import { useRouter } from 'next/router';
 import { Button } from '../../../shared/ui/button';
 import { Input } from '../../../shared/ui/input';
 import { Label } from '../../../shared/ui/label';
 import { useAuthForm } from '../model/useAuthForm';
+import { useSignup } from '../model/hooks/useSignup';
 
 export function SignupForm() {
-  const router = useRouter();
   const {
     formData,
     errors,
@@ -14,6 +13,7 @@ export function SignupForm() {
     validatePassword,
     validateName,
   } = useAuthForm();
+  const signupMutation = useSignup();
 
   const handleSignup = () => {
     if (
@@ -22,7 +22,11 @@ export function SignupForm() {
       validateName(formData.fullname || '') &&
       formData.password === formData.confirmPassword
     ) {
-      router.push('/users');
+      signupMutation.mutate({
+        email: formData.email,
+        password: formData.password,
+        fullname: formData.fullname || '',
+      });
     }
   };
 
@@ -95,9 +99,10 @@ export function SignupForm() {
       <Button
         type="button"
         onClick={handleSignup}
-        className="h-12 w-full rounded-xl bg-black text-base font-medium text-white transition-all duration-200 hover:bg-gray-800"
+        disabled={signupMutation.isPending}
+        className="h-12 w-full rounded-xl bg-black text-base font-medium text-white transition-all duration-200 hover:bg-gray-800 disabled:bg-gray-400"
       >
-        Create Account
+        {signupMutation.isPending ? '회원가입 중...' : 'Create Account'}
       </Button>
     </form>
   );

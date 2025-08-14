@@ -1,16 +1,19 @@
-import { useRouter } from 'next/router';
 import { Button } from '../../../shared/ui/button';
 import { Input } from '../../../shared/ui/input';
 import { Label } from '../../../shared/ui/label';
 import { useAuthForm } from '../model/useAuthForm';
+import { useSignin } from '../model/hooks/useSignin';
 
 export function SigninForm() {
-  const router = useRouter();
   const { formData, errors, handleInputChange, validateEmail } = useAuthForm();
+  const signinMutation = useSignin();
 
   const handleLogin = () => {
     if (validateEmail(formData.email) && formData.password) {
-      router.push('/users');
+      signinMutation.mutate({
+        email: formData.email,
+        password: formData.password,
+      });
     }
   };
 
@@ -51,9 +54,10 @@ export function SigninForm() {
       <Button
         type="button"
         onClick={handleLogin}
-        className="h-12 w-full rounded-xl bg-black text-base font-medium text-white transition-all duration-200 hover:bg-gray-800"
+        disabled={signinMutation.isPending}
+        className="h-12 w-full rounded-xl bg-black text-base font-medium text-white transition-all duration-200 hover:bg-gray-800 disabled:bg-gray-400"
       >
-        Sign In
+        {signinMutation.isPending ? '로그인 중...' : 'Sign In'}
       </Button>
     </form>
   );
