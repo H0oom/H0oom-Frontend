@@ -12,8 +12,8 @@ export const useSignup = () => {
     mutationFn: (data: SignupRequest) => authApi.signup(data),
     onSuccess: (response) => {
       setAccessToken(response.token);
+      router.push('/users');
       toast.success('회원가입이 완료되었습니다.');
-      router.push('/');
     },
     onError: (error: Error) => {
       toast.error(error.message);
