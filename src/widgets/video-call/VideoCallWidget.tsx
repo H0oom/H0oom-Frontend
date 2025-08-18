@@ -23,10 +23,10 @@ export function VideoCallWidget() {
                 <div className="flex h-full w-full items-center justify-center">
                   <div className="text-center">
                     <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 text-2xl md:mb-4 md:h-24 md:w-24 md:text-4xl">
-                      {user.avatar}
+                      🧑‍💻
                     </div>
                     <p className="text-lg font-medium text-white md:text-xl">
-                      {user.fullname}
+                      {user.name}
                     </p>
                   </div>
                 </div>
@@ -34,10 +34,10 @@ export function VideoCallWidget() {
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
                   <div className="text-center">
                     <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 text-2xl md:mb-4 md:h-24 md:w-24 md:text-4xl">
-                      {user.avatar}
+                      🧑‍💻
                     </div>
                     <p className="text-lg font-medium text-white md:text-xl">
-                      {user.fullname}
+                      {user.name}
                     </p>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ export function VideoCallWidget() {
       <div className="absolute left-4 top-4 md:left-8 md:top-8">
         <div className="rounded-xl bg-white/10 px-4 py-2 backdrop-blur-xl md:rounded-2xl md:px-6 md:py-3">
           <p className="text-sm font-medium text-white md:text-base">
-            {t('inCallWith', { name: user.fullname })}
+            {t('inCallWith', { name: user.name })}
           </p>
         </div>
       </div>

@@ -14,7 +14,7 @@ export function ChatWidget() {
   const userId = Number(router.query.userId || '0');
   const user = users.find((u) => u.id === userId);
   const { message, setMessage, messages, sendMessage } = useChat(
-    user?.fullname || '',
+    user?.name || '',
   );
 
   if (!user) return <div>{t('notFound')}</div>;
