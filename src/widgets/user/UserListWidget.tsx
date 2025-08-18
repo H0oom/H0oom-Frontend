@@ -2,6 +2,7 @@ import { Video } from 'lucide-react';
 import { AiUsers } from '@/entities/user/mockUsers';
 import { UserCard } from '@/entities/user/ui/UserCard';
 import { useUser } from '@/entities/user/model/hooks/useUser';
+import { UserCardSkeleton } from '@/entities/user/ui/UserCardSkeleton';
 
 export function UserListWidget() {
   const { data: users, isLoading, isError } = useUser();
@@ -30,7 +31,13 @@ export function UserListWidget() {
         <div className="mb-8">
           <h2 className="mb-6 text-xl font-medium text-black">People</h2>
           <div className="grid gap-2">
-            {isLoading && <div className="text-gray-500">Loading...</div>}
+            {isLoading && (
+              <div className="grid gap-2">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <UserCardSkeleton key={index} />
+                ))}
+              </div>
+            )}
             {isError && (
               <div className="text-red-500">
                 사용자 목록을 불러오지 못했습니다.
