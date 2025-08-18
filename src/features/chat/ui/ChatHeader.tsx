@@ -24,10 +24,10 @@ export function ChatHeader({ user, onBack, onCall }: ChatHeaderProps) {
             <ArrowLeft className="h-5 w-5" />
           </Button>
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
-            {user.avatar}
+            🧑‍💻
           </div>
           <div>
-            <h2 className="text-lg font-medium text-black">{user.fullname}</h2>
+            <h2 className="text-lg font-medium text-black">{user.name}</h2>
             <p className="text-sm text-gray-500">
               {user.status === 'online' ? t('status.online') : t('status.away')}
             </p>

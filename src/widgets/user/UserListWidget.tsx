@@ -1,8 +1,11 @@
 import { Video } from 'lucide-react';
-import { AiUsers, users } from '@/entities/user/mockUsers';
+import { AiUsers } from '@/entities/user/mockUsers';
 import { UserCard } from '@/entities/user/ui/UserCard';
+import { useUser } from '@/entities/user/model/hooks/useUser';
 
 export function UserListWidget() {
+  const { data: users, isLoading, isError } = useUser();
+
   return (
     <div className="min-h-screen bg-white">
       <header className="border-b border-gray-100 bg-white p-6">
@@ -14,12 +17,6 @@ export function UserListWidget() {
             <h1 className="text-3xl font-light tracking-tight text-black">
               hoom
             </h1>
-          </div>
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-2">
-              <div className="h-2 w-2 rounded-full bg-green-500" />
-              <span className="font-medium text-gray-600">14 online</span>
-            </div>
           </div>
         </div>
       </header>
@@ -33,7 +30,13 @@ export function UserListWidget() {
         <div className="mb-8">
           <h2 className="mb-6 text-xl font-medium text-black">People</h2>
           <div className="grid gap-2">
-            {users.map((user) => (
+            {isLoading && <div className="text-gray-500">Loading...</div>}
+            {isError && (
+              <div className="text-red-500">
+                사용자 목록을 불러오지 못했습니다.
+              </div>
+            )}
+            {users?.map((user) => (
               <UserCard key={user.id} user={user} url={`/chat/${user.id}`} />
             ))}
           </div>
