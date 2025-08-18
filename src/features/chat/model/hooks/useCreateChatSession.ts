@@ -1,16 +1,25 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { chatApi } from '../api/chatApi';
-import { CreateSessionRequest } from '../api/types';
+import { CreateSessionRequest, CreateSessionResponse } from '../api/types';
 
 export const useCreateChatSession = () => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
-  return useMutation({
+  return useMutation<CreateSessionResponse, Error, CreateSessionRequest>({
     mutationFn: (data: CreateSessionRequest) => chatApi.createSession(data),
-    onSuccess: () => {
-      toast.success('채팅 세션이 시작되었습니다.');
+    onSuccess: async (data) => {
+      try {
+        await queryClient.prefetchQuery({
+          queryKey: ['chat', data.room_id, 'messages'],
+          queryFn: () => chatApi.getMessages(data.room_id),
+        });
+        toast.success('채팅 세션이 시작되었습니다. 기존 메시지를 불러왔어요.');
+      } catch (e) {
+        toast.error('기존 채팅 데이터를 불러오지 못했어요.');
+      }
     },
     onError: (error: Error) => {
       toast.error(error.message);

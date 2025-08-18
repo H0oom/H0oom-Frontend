@@ -11,4 +11,10 @@ export const chatApi = {
     );
     return response.data;
   },
+  getMessages: async (roomId: number): Promise<unknown[]> => {
+    const response = await axiosClient.get<unknown[]>(
+      `/chat/${roomId}/messages`,
+    );
+    return response.data;
+  },
 };
