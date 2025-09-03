@@ -16,11 +16,19 @@ export const useCreateChatSession = () => {
           queryKey: ['chat', data.room_id, 'messages'],
           queryFn: () => chatApi.getMessages(data.room_id),
         });
-        toast.success('채팅 세션이 시작되었습니다. 기존 메시지를 불러왔어요.');
+        if (!toast.isActive('chat-session-start')) {
+          toast.success(
+            '채팅 세션이 시작되었습니다. 기존 메시지를 불러왔어요.',
+            {
+              toastId: 'chat-session-start',
+            },
+          );
+        }
       } catch (e) {
         toast.error('기존 채팅 데이터를 불러오지 못했어요.');
       }
     },
+
     onError: (error: Error) => {
       toast.error(error.message);
       router.push('/users');
