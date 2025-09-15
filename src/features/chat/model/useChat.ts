@@ -18,9 +18,8 @@ export function useChat(userName: string) {
     const token = getAccessToken();
 
     socket.on('connect', () => {
-      const formattedToken = `Bearer ${token}`;
-      console.log('connected, sending token:', formattedToken);
-      socket.emit('authenticate', { token: formattedToken });
+      console.log('connected, sending token:', token);
+      socket.emit('authenticate', { token: token });
     });
 
     socket.on('auth_error', (err) => {
