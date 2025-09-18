@@ -19,7 +19,11 @@ export function useChat(userName: string) {
 
     socket.on('connect', () => {
       console.log('connected, sending token:', token);
-      socket.emit('authenticate', { token: token });
+      socket.emit('authenticate', { token });
+    });
+
+    socket.on('authenticated', () => {
+      console.log('auth success, joining room');
     });
 
     socket.on('auth_error', (err) => {
@@ -28,6 +32,7 @@ export function useChat(userName: string) {
 
     return () => {
       socket.off('connect');
+      socket.off('auth_success');
       socket.off('auth_error');
     };
   }, []);
