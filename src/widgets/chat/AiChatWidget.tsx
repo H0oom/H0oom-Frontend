@@ -3,7 +3,7 @@ import { AiUsers } from '@/entities/user/mockUsers';
 import { useAiChat } from '@/features/chat/model/hooks/useAiChat';
 import { ChatHeader } from '@/features/chat/ui/ChatHeader';
 import { ChatInput } from '@/features/chat/ui/ChatInput';
-import { ChatMessages } from '@/features/chat/ui/ChatMessages';
+import { ChatAiMessages } from '@/features/chat/ui/ChatAiMessages';
 
 export function AiChatWidget() {
   const router = useRouter();
@@ -13,7 +13,7 @@ export function AiChatWidget() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <ChatHeader user={AiUsers} onBack={() => router.push('/users')} />
-      <ChatMessages messages={messages} />
+      <ChatAiMessages messages={messages} />
       <ChatInput
         message={message}
         setMessage={setMessage}

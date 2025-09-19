@@ -1,5 +1,6 @@
 import axiosClient from '@/shared/api/axiosClient';
 import { CreateSessionRequest, CreateSessionResponse } from './types';
+import { ServerMessage } from '../messagesSlice';
 
 export const chatApi = {
   createSession: async (
@@ -11,8 +12,8 @@ export const chatApi = {
     );
     return response.data;
   },
-  getMessages: async (roomId: number): Promise<unknown[]> => {
-    const response = await axiosClient.get<unknown[]>(
+  getMessages: async (roomId: number): Promise<ServerMessage[]> => {
+    const response = await axiosClient.get<ServerMessage[]>(
       `/chat/${roomId}/messages`,
     );
     return response.data;
