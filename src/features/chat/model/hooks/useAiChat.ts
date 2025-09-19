@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Message } from './useChat';
+
 import { fetchClient } from '@/shared/api/fetchClient';
+import { Message } from './useChat';
 
 export function useAiChat(userName: string) {
   const [message, setMessage] = useState('');

@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router';
 import { users } from '@/entities/user/mockUsers';
-import { useChat } from '@/features/chat/model/useChat';
+import { useChat } from '@/features/chat/model/hooks/useChat';
 import { ChatHeader } from '@/features/chat/ui/ChatHeader';
 import { ChatInput } from '@/features/chat/ui/ChatInput';
 import { ChatMessages } from '@/features/chat/ui/ChatMessages';
 import { useTranslation } from 'next-i18next';
-import { GetServerSideProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export function ChatWidget() {
   const { t } = useTranslation('chat');

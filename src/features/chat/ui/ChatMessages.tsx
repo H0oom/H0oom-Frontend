@@ -1,4 +1,4 @@
-import { Message } from '../model/useChat';
+import { Message } from '../model/hooks/useChat';
 
 type ChatMessagesProps = {
   messages: Message[];

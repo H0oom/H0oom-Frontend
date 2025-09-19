@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { AiUsers } from '@/entities/user/mockUsers';
-import { useAiChat } from '@/features/chat/model/useAiChat';
+import { useAiChat } from '@/features/chat/model/hooks/useAiChat';
 import { ChatHeader } from '@/features/chat/ui/ChatHeader';
 import { ChatInput } from '@/features/chat/ui/ChatInput';
 import { ChatMessages } from '@/features/chat/ui/ChatMessages';
