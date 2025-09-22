@@ -7,7 +7,6 @@ import { initSocket } from '../initSocket';
 import { setMessages } from '../messagesSlice';
 
 export const useCreateChatSession = () => {
-  const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   return useMutation<CreateSessionResponse, Error, CreateSessionRequest>({

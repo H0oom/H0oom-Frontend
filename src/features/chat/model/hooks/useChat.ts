@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/shared/stores/store';
 import { socket } from '@/shared/api/socket';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addMessage, ServerMessage } from '../messagesSlice';
 
 export function useChat() {
@@ -14,24 +14,26 @@ export function useChat() {
 
   const sendMessage = () => {
     if (!message.trim()) return;
-    const now = new Date().toISOString();
-
-    const newMessage: ServerMessage = {
-      id: Date.now().toString(),
-      user_id: '0',
-      user_name: '나',
-      message: message,
-      created_at: now,
-    };
 
     socket.emit('send_message', {
       room_id: roomId,
       message: message,
     });
 
-    dispatch(addMessage(newMessage));
     setMessage('');
   };
+
+  useEffect(() => {
+    const handleNewMessage = (data: ServerMessage) => {
+      dispatch(addMessage(data));
+    };
+
+    socket.on('new_message', handleNewMessage);
+
+    return () => {
+      socket.off('new_message', handleNewMessage);
+    };
+  }, [dispatch]);
 
   return { message, setMessage, messages, sendMessage };
 }
