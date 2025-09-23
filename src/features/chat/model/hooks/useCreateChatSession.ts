@@ -1,29 +1,29 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
+import { useMutation } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { chatApi } from '../api/chatApi';
-import { CreateSessionRequest, CreateSessionResponse } from '../api/types';
+import { chatApi, CreateSessionRequest, CreateSessionResponse } from '../api';
+import { setRoomId } from '../chatSlice';
+
+import { setMessages } from '../messagesSlice';
 
 export const useCreateChatSession = () => {
-  const router = useRouter();
-  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   return useMutation<CreateSessionResponse, Error, CreateSessionRequest>({
     mutationFn: (data: CreateSessionRequest) => chatApi.createSession(data),
     onSuccess: async (data) => {
+      dispatch(setRoomId(data.room_id));
+
       try {
-        await queryClient.prefetchQuery({
-          queryKey: ['chat', data.room_id, 'messages'],
-          queryFn: () => chatApi.getMessages(data.room_id),
-        });
-        toast.success('채팅 세션이 시작되었습니다. 기존 메시지를 불러왔어요.');
-      } catch (e) {
-        toast.error('기존 채팅 데이터를 불러오지 못했어요.');
+        const serverMessages = await chatApi.getMessages(data.room_id);
+        dispatch(setMessages(serverMessages));
+      } catch {
+        toast.error('기존 채팅 데이터를 불러오지 못했습니다.');
       }
     },
+
     onError: (error: Error) => {
       toast.error(error.message);
-      router.push('/users');
     },
   });
 };

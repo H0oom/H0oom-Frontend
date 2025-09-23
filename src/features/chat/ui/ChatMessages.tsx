@@ -1,30 +1,38 @@
-import { Message } from '../model/useChat';
+import { useRouter } from 'next/router';
+import { ServerMessage } from '../model/messagesSlice';
+import { formatMessageTime } from '@/shared/model/formatMessageTime';
 
 type ChatMessagesProps = {
-  messages: Message[];
+  messages: ServerMessage[];
 };
 
 export function ChatMessages({ messages }: ChatMessagesProps) {
+  const router = useRouter();
+  const userId = router.query.userId?.toString() || '';
+
   return (
     <div className="mx-auto w-full max-w-4xl flex-1 overflow-y-auto p-6">
       <div className="space-y-6">
-        {messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`flex ${msg.isMe ? 'justify-end' : 'justify-start'}`}
-          >
+        {messages.map((msg) => {
+          const isMe = msg.user_id !== userId;
+          return (
             <div
-              className={`max-w-xs rounded-2xl px-5 py-3 lg:max-w-md ${msg.isMe ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}
+              key={msg.id}
+              className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}
             >
-              <p className="text-base">{msg.content}</p>
-              <p
-                className={`mt-2 text-xs ${msg.isMe ? 'text-gray-300' : 'text-gray-500'}`}
+              <div
+                className={`max-w-xs rounded-2xl px-5 py-3 lg:max-w-md ${isMe ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}
               >
-                {msg.time}
-              </p>
+                <p className="text-base">{msg.message}</p>
+                <p
+                  className={`mt-2 text-xs ${isMe ? 'text-gray-300' : 'text-gray-500'}`}
+                >
+                  {formatMessageTime(msg.created_at)}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

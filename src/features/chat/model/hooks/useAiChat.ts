@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Message } from './useChat';
+import { AiMessageType } from '../../types/aiMessageType';
 import { fetchClient } from '@/shared/api/fetchClient';
 
 export function useAiChat(userName: string) {
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<AiMessageType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const sendMessage = async () => {
